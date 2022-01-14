@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6ffe1f1ad30b85d7d67ccf3fec6c6a7f0fcc52529d9127c77e9eb755d8529692"
+            "sha256": "df73133500655598d7ae01910440e7c139c0060d3d7093dd98f1f0cab1976a07"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -150,6 +150,14 @@
             "index": "pypi",
             "version": "==4.0.1"
         },
+        "django-cors-headers": {
+            "hashes": [
+                "sha256:a22be2befd4069c4fc174f11cf067351df5c061a3a5f94a01650b4e928b0372b",
+                "sha256:eb98389bf7a2afc5d374806af4a9149697e3a6955b5a2dc2bf049f7d33647456"
+            ],
+            "index": "pypi",
+            "version": "==3.11.0"
+        },
         "django-environ": {
             "hashes": [
                 "sha256:42593bee519a527602a467c7b682aee1a051c2597f98c45f4f4f44169ecdb6e5",
@@ -178,7 +186,7 @@
                 "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee",
                 "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"
             ],
-            "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==3.13.1"
         },
         "djangorestframework-simplejwt": {
