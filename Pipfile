@@ -13,6 +13,7 @@ psycopg2-binary = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 django-toggle-m2m = "*"
+django-custom-user = "*"
 
 [dev-packages]
 
