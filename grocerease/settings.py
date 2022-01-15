@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'djoser',
     'app',
     'corsheaders',
+    'custom_user',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,5 @@ REST_FRAMEWORK = {
 DJOSER = {
     'PERMISSIONS': { 'user_create': ['rest_framework.permissions.AllowAny']}
 }
+
+AUTH_USER_MODEL = 'custom_user.EmailUser'

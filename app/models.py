@@ -5,7 +5,6 @@ from django.contrib.auth.models import AbstractUser
 from django_toggle_m2m.toggle import ToggleManyToMany
 
 class User(AbstractUser):
-    following = models.ManyToManyField("CustomUser", related_name='followers', blank=True)
 
     def __repr__(self):
         return f"<User username={self.username}>"
@@ -14,29 +13,25 @@ class User(AbstractUser):
         return self.username
 
 class Location(models.Model):
+    # number = models.IntegerField(Holding off on this for the moment.)
+    #grocery_store = models.Charfield(max_length=250)
     pass
 
 class Category(models.Model):
-    pass
+    category =  models.CharField(max_length=250)
+
 
 class Product(models.Model):
-    name = models.Charfield(max_length=250)
+    name = models.CharField(max_length=250)
     image = models.URLField(max_length=200, null=True, blank=True)
-    product_category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories')
-    product_location = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='locations')
-
-    # List
-    # Users
-    # Many to many
-    # Product
-    # Many to many
-    # Slug
-    # SlugField
-    # (I think I need this for when users click a specific list)
-    # Category:
-    # Product_Categories
-    # Foreign_key?
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories')
+    locations = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='locations')
 
 class List(models.Model):
-    pass
+    name = models.CharField(max_length=250)
+    users = models.ManyToManyField('User', related_name='lists', blank=True)
+    products = models.ManyToManyField('Product', related_name='products', blank=True)  
+    # Slug
+    # SlugField
+    # (I think I need this for when users click a specific list, but not sure. Holding that for now.)
 
