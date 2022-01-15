@@ -5,7 +5,6 @@ from django.contrib.auth.models import AbstractUser
 from django_toggle_m2m.toggle import ToggleManyToMany
 
 class User(AbstractUser):
-
     def __repr__(self):
         return f"<User username={self.username}>"
 
