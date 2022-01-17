@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-    path('grocerease/create_list', app_views.CreateList.as_view(), name='create_list' ),
+    path('grocerease/create_list', app_views.CreateList.as_view(), name='create_list'),
+    path('grocerease/add_list_item/<int:pk>/', app_views.AddListItem.as_view(), name='add_list_item'),
+    path('grocerease/delete_list_item/<int:pk>', app_views.DeleteListItem.as_view(), name='delete_list_item'),
 ]
