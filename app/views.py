@@ -15,6 +15,6 @@ class AddListItem(RetrieveUpdateDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
 
-class DeleteListItem(UpdateAPIView):
+class UpdateListItem(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
