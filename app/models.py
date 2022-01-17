@@ -28,7 +28,7 @@ class Product(models.Model):
     locations = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='locations')
 
 class List(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, null=True, blank=True)
     users = models.ManyToManyField('User', related_name='lists', blank=True)
     products = models.ManyToManyField('Product', related_name='products', blank=True)  
     # Slug
