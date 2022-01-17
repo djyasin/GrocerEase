@@ -26,4 +26,5 @@ urlpatterns = [
     path('grocerease/add_list_item/<int:pk>/', app_views.AddListItem.as_view(), name='add_list_item'),
     path('grocerease/delete_list_item/<int:pk>/', app_views.UpdateListItem.as_view(), name='delete_list_item'),
     path('grocerease/edit_list_item/<int:pk>/', app_views.UpdateListItem.as_view(), name='edit_list_item'),
+    path('grocerease/delete_list/<int:pk>/', app_views.DeleteList.as_view(), name='delete_list' )
 ]
