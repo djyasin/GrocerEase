@@ -7,6 +7,10 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 
+class DeleteList(RetrieveUpdateDestroyAPIView):
+    queryset = List.objects.all()
+    serializer_class = ListSerializer
+    
 class CreateList(generics.ListCreateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
@@ -18,3 +22,5 @@ class AddListItem(RetrieveUpdateDestroyAPIView):
 class UpdateListItem(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
+
+
