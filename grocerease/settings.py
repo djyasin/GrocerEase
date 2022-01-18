@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
     'djoser',
     'app',
     'corsheaders',
@@ -151,3 +152,4 @@ DJOSER = {
 }
 
 AUTH_USER_MODEL = 'app.User'
+CORS_ALLOW_ALL_ORIGINS = True

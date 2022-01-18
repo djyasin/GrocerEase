@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .models import User, Location, Category, Product, List
-from .serializers import ListSerializer 
+from .serializers import ListSerializer, UserSerializer
 from rest_framework.generics import RetrieveDestroyAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework import viewsets
 from rest_framework import status
@@ -24,3 +24,5 @@ class UpdateListItem(UpdateAPIView):
     serializer_class = ListSerializer
 
 
+class Register(CreateAPIView):
+    serializer_class = UserSerializer
