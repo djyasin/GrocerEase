@@ -15,6 +15,7 @@ import django_on_heroku
 import environ
 import os
 
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -134,6 +135,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join( 'static')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
