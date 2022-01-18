@@ -23,6 +23,5 @@ class UpdateListItem(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
 
-
 class Register(CreateAPIView):
     serializer_class = UserSerializer
