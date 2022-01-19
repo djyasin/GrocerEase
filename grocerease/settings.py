@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'djoser',
     'app',
     'corsheaders',
-    # 'custom_user',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +156,6 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'app.User'
 CORS_ALLOW_ALL_ORIGINS = True
+
+django_on_heroku.settings(locals())
+del DATABASES["default"]["OPTIONS"]["sslmode"]
