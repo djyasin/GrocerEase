@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
 django-extensions = "*"
 djoser = "*"
 django-environ = "*"
@@ -18,6 +17,7 @@ django-on-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+django = "*"
 
 [dev-packages]
 

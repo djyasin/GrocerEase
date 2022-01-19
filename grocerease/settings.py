@@ -15,6 +15,8 @@ import django_on_heroku
 import environ
 import os
 
+django_on_heroku.settings(locals())
+
 
 env = environ.Env(
     # set casting, default value
@@ -99,7 +101,7 @@ DATABASES = {
 }
 
 
-
+del DATABASES["default"]["OPTIONS"]["sslmode"]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -157,5 +159,3 @@ DJOSER = {
 AUTH_USER_MODEL = 'app.User'
 CORS_ALLOW_ALL_ORIGINS = True
 
-django_on_heroku.settings(locals())
-del DATABASES["default"]["OPTIONS"]["sslmode"]
