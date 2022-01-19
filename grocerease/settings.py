@@ -15,7 +15,7 @@ import django_on_heroku
 import environ
 import os
 
-django_on_heroku.settings(locals())
+
 
 
 env = environ.Env(
@@ -101,7 +101,6 @@ DATABASES = {
 }
 
 
-del DATABASES["default"]["OPTIONS"]["sslmode"]
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -138,6 +137,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join( 'static')
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 
 # Default primary key field type
@@ -158,4 +160,7 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'app.User'
 CORS_ALLOW_ALL_ORIGINS = True
+
+django_on_heroku.settings(locals())
+del DATABASES["default"]["OPTIONS"]["sslmode"]
 
