@@ -17,6 +17,7 @@ django-custom-user = "*"
 django-on-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-heroku = "*"
 
 [dev-packages]
 
