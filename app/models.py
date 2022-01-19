@@ -1,3 +1,4 @@
+from django.utils import timezone
 from unicodedata import category
 from django.db import models
 from django.conf import settings
@@ -20,6 +21,8 @@ class Location(models.Model):
 class Category(models.Model):
     category =  models.CharField(max_length=250)
 
+class Tag(models.Model):
+    tag = models.CharField(max_length=250)
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
@@ -30,8 +33,8 @@ class Product(models.Model):
 class List(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True)
     users = models.ManyToManyField('User', related_name='lists', blank=True)
-    products = models.ManyToManyField('Product', related_name='products', blank=True)  
-    # Slug
-    # SlugField
-    # (I think I need this for when users click a specific list, but not sure. Holding that for now.)
+    products = models.ManyToManyField('Product', related_name='lists', blank=True)  
+    tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
+    date_created = models.DateTimeField(default=timezone.now, null=True)
 
+    
