@@ -16,6 +16,7 @@ django-toggle-m2m = "*"
 django-custom-user = "*"
 django-on-heroku = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
