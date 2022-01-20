@@ -30,4 +30,6 @@ urlpatterns = [
     path('grocerease/delete_list/<int:pk>/', app_views.DeleteList.as_view(), name='delete_list'),
     path('grocerease/register/', app_views.RegisterView.as_view(), name='auth_register'),
     path('grocerease/create_tag/', app_views.CreateTag.as_view(), name='create_Tag'),
+    path('grocerease/list_item/<int:pk>/', app_views.ListItem.as_view(), name='list_item'),
+    path('grocerease/create_item', app_views.CreateItem.as_view(), name='create_item')
 ]

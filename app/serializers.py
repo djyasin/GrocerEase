@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Location, Category, Product, List, Tag
+from .models import User, Location, Category, Product, List, Tag, ListItem
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
@@ -24,8 +24,16 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ('name',
         'image',
-        'categories',
-        'locations'       
+        'categories',      
+        )
+
+class ItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ListItem
+        fields = ( 'products',
+        'item_quantity',
+        'list'
         )
 
 class ListSerializer(serializers.ModelSerializer):
@@ -34,7 +42,6 @@ class ListSerializer(serializers.ModelSerializer):
         model = List
         fields = ('name',
         'users',
-        'products',
         'tags',
         'date_created'
         )
