@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
 
-class DeleteList(RetrieveUpdateDestroyAPIView):
+class DeleteList(RetrieveDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
     
@@ -21,7 +21,7 @@ class AddListItem(RetrieveUpdateDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
 
-class UpdateListItem(UpdateAPIView):
+class UpdateList(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
 
