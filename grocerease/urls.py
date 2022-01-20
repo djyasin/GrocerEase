@@ -29,4 +29,5 @@ urlpatterns = [
     path('grocerease/edit_list_item/<int:pk>/', app_views.UpdateListItem.as_view(), name='edit_list_item'),
     path('grocerease/delete_list/<int:pk>/', app_views.DeleteList.as_view(), name='delete_list'),
     path('grocerease/register/', app_views.RegisterView.as_view(), name='auth_register'),
+    path('grocerease/create_tag/', app_views.CreateTag.as_view(), name='create_Tag'),
 ]
