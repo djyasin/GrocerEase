@@ -1,16 +1,21 @@
 from rest_framework import serializers
-from .models import User, Location, Category, Product, List
+from .models import User, Location, Category, Product, List, Tag
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
 # class LoctaionSerializer(serializers.ModelSerializer):
 #     pass
 
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('tag',)
+
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('category')
+        fields = ('category',)
 
 
 class ProductSerializer(serializers.ModelSerializer):
