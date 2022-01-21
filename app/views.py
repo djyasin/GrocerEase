@@ -30,7 +30,7 @@ class CreateTag(generics.CreateAPIView):
     serializer_class = TagSerializer
 
 class ListItem(RetrieveUpdateDestroyAPIView):
-    queryset = ListItem()
+    queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
 
 class CreateItem(generics.CreateAPIView):
