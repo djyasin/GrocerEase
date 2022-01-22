@@ -1,5 +1,4 @@
 """grocerease URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -23,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-    path('grocerease/create_list/', app_views.CreateList.as_view(), name='create_list'),
+    path('grocerease/lists/', app_views.GroceryListView.as_view(), name='lists'),
     path('grocerease/edit_list/<int:pk>/', app_views.UpdateList.as_view(), name='edit_list'),
     path('grocerease/delete_list/<int:pk>/', app_views.DeleteList.as_view(), name='delete_list'),
     path('grocerease/create_tag/', app_views.CreateTag.as_view(), name='create_Tag'),

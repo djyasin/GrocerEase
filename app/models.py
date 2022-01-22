@@ -34,7 +34,7 @@ class Product(models.Model):
 
 class List(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True)
-    users = models.ManyToManyField('User', related_name='lists', blank=True) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lists') 
     tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
     date_created = models.DateTimeField(default=timezone.now, null=True)
 
