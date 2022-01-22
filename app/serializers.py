@@ -2,7 +2,8 @@ from rest_framework import serializers
 from .models import User, Location, Category, Product, List, Tag, ListItem
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-
+from rest_framework.generics import get_object_or_404
+from rest_framework.exceptions import PermissionDenied
 # class LoctaionSerializer(serializers.ModelSerializer):
 #     pass
 
@@ -37,6 +38,15 @@ class ItemSerializer(serializers.ModelSerializer):
         'list',
         'name'
         )
+        read_only_fields = ['list']
+    
+    # def perform_create(self, serializer):
+    #     list = get_object_or_404(List, pk=self.kwargs["list_pk"])
+    #     if self.request.user != list.user:
+    #         raise PermissionDenied
+    #     # if user does not own the list then return 403
+    #     serializer.save(list=list)
+
 
 class ListSerializer(serializers.ModelSerializer):
 

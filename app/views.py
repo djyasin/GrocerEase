@@ -8,6 +8,8 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from rest_framework.exceptions import PermissionDenied
+from rest_framework.generics import get_object_or_404
 
 class GroceryListView(generics.ListCreateAPIView):
     queryset = List.objects.all()
@@ -44,6 +46,13 @@ class ListItemsView(ListCreateAPIView):
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(list_id=self.kwargs["list_pk"])
+
+    def perform_create(self, serializer):
+        list = get_object_or_404(List, pk=self.kwargs["list_pk"])
+        if self.request.user != list.user:
+            raise PermissionDenied
+        # if user does not own the list then return 403
+        serializer.save(list=list)
 
 
 

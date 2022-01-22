@@ -40,7 +40,7 @@ class List(models.Model):
 
     
 class ListItem(models.Model):
-    products = models.ManyToManyField('Product', related_name='items')  
+    products = models.ManyToManyField('Product', related_name='items', null=True, blank=True)  
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
     name = models.CharField(max_length=250)
