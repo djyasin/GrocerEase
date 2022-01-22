@@ -40,15 +40,19 @@ class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = List
-        fields = ('name',
-        'users',
+        fields = ('pk',
+        'name',
+        'user', 
         'tags',
         'date_created'
         )
+        read_only_fields = ['user']
+        
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
         fields = ("username", "email", "password")
-

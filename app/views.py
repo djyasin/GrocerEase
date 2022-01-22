@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from .models import User, Location, Category, Product, List, Tag, ListItem
 from .serializers import ItemSerializer, ListSerializer, TagSerializer, UserSerializer
@@ -13,9 +14,13 @@ class DeleteList(RetrieveDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
     
-class CreateList(generics.ListCreateAPIView):
+class GroceryListView(generics.ListCreateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class AddListItem(RetrieveUpdateDestroyAPIView):
     queryset = List.objects.all()
@@ -46,6 +51,7 @@ class ViewLists(generics.ListAPIView):
     serializer_class = ListSerializer
 
     def get_queryset(self):
-        user = self.request.user
-        queryset = List.objects.filter(users=user.pk)
+        users = self.request.user
+        queryset = List.objects.filter(users=users.pk)
         return queryset
+
