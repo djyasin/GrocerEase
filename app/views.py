@@ -59,3 +59,7 @@ class ViewLists(generics.ListAPIView):
         queryset = List.objects.filter(users=users.pk)
         return queryset
 
+class ListDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = List.objects.all()
+    serializer_class = ListSerializer
+
