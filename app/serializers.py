@@ -31,9 +31,11 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ListItem
-        fields = ( 'products',
+        fields = ( 'pk',
+        'products',
         'item_quantity',
-        'list'
+        'list',
+        'name'
         )
 
 class ListSerializer(serializers.ModelSerializer):
@@ -56,3 +58,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "email", "password")
+
