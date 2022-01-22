@@ -23,11 +23,17 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('grocerease/lists/', app_views.GroceryListView.as_view(), name='lists'),
-    path('grocerease/edit_list/<int:pk>/', app_views.UpdateList.as_view(), name='edit_list'),
-    path('grocerease/delete_list/<int:pk>/', app_views.DeleteList.as_view(), name='delete_list'),
-    path('grocerease/create_tag/', app_views.CreateTag.as_view(), name='create_Tag'),
-    path('grocerease/list_item/<int:pk>/', app_views.ListItem.as_view(), name='list_item'),
-    path('grocerease/create_item/', app_views.CreateItem.as_view(), name='create_item'),
-    path('grocerease/view_lists/<int:pk>/', app_views.ViewLists.as_view(), name='view_lists'),
-    path('grocerease/list_detail/<int:pk>/', app_views.ListDetailView.as_view(), name='list_detail')
+    path('grocerease/list_detail/<int:pk>/', app_views.ListDetailView.as_view(), name='list_detail'),
+    path('grocerease/edit_list/<int:pk>/', app_views.UpdateListView.as_view(), name='edit_list'),
+    path('grocerease/delete_list/<int:pk>/', app_views.DeleteListView.as_view(), name='delete_list'),
+    path('grocerease/create_tag/', app_views.CreateTagView.as_view(), name='create_Tag'),
+    path('grocerease/lists/<int:list_pk>/items/', app_views.ListItemsView.as_view(), name='list_items'),
+    
+    
+
+    # path('grocerease/create_item/', app_views.CreateItemView.as_view(), name='create_item'),
+    # path('grocerease/view_lists/<int:pk>/', app_views.ViewListsView.as_view(), name='view_lists'),
+
+
+    
 ]

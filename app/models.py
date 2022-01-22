@@ -33,13 +33,14 @@ class Product(models.Model):
     locations = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
 
 class List(models.Model):
-    name = models.CharField(max_length=250, null=True, blank=True)
+    name = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lists') 
     tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
-    date_created = models.DateTimeField(default=timezone.now, null=True)
+    date_created = models.DateTimeField(default=timezone.now)
 
     
 class ListItem(models.Model):
-    products = models.ManyToManyField('Product', related_name='items', blank=True)  
+    products = models.ManyToManyField('Product', related_name='items')  
     item_quantity = models.PositiveIntegerField(default=1)
-    list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list', blank=True, null=True)
+    list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
+    name = models.CharField(max_length=250)
