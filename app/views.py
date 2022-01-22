@@ -19,6 +19,10 @@ class GroceryListView(generics.ListCreateAPIView):
     serializer_class = ListSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
