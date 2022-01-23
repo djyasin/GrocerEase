@@ -40,14 +40,6 @@ class ItemSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ['list']
     
-    # def perform_create(self, serializer):
-    #     list = get_object_or_404(List, pk=self.kwargs["list_pk"])
-    #     if self.request.user != list.user:
-    #         raise PermissionDenied
-    #     # if user does not own the list then return 403
-    #     serializer.save(list=list)
-
-
 class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
