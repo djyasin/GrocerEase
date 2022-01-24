@@ -16,6 +16,10 @@ django-on-heroku = "*"
 gunicorn = "*"
 whitenoise = "*"
 django = "*"
+cryptography = "*"
+drf-jwt = "*"
+pyjwt = "*"
+requests = "*"
 
 [dev-packages]
 
