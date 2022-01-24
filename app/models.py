@@ -41,7 +41,7 @@ class List(models.Model):
     
 class ListItem(models.Model):
     name = models.CharField(max_length=250)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories') 
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', null=True, blank=True) 
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
-    
+
