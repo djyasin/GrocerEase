@@ -29,7 +29,7 @@ class Tag(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=250)
     image = models.URLField(max_length=200, null=True, blank=True)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories')
+    
     locations = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
 
 class List(models.Model):
@@ -40,7 +40,8 @@ class List(models.Model):
 
     
 class ListItem(models.Model):
-    products = models.ManyToManyField('Product', related_name='items', null=True, blank=True)  
+    name = models.CharField(max_length=250)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories') 
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
-    name = models.CharField(max_length=250)
+    
