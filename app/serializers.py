@@ -24,8 +24,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('name',
-        'image',
-        'categories',      
+        'image',    
         )
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -33,10 +32,10 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListItem
         fields = ( 'pk',
-        'products',
-        'item_quantity',
         'list',
-        'name'
+        'name',
+        'item_quantity',
+        'categories',
         )
         read_only_fields = ['list']
     
