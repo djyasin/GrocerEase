@@ -14,7 +14,7 @@ from rest_framework.generics import get_object_or_404
 class GroceryListView(generics.ListCreateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
-    permission_classes = [IsAuthenticated]
+
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -26,24 +26,24 @@ class GroceryListView(generics.ListCreateAPIView):
 class ListDetailView(RetrieveUpdateDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
-    permission_classes = [IsAuthenticated]
+
 
 class UpdateListView(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
-    permission_classes = [IsAuthenticated]
+
 
 class DeleteListView(DestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
-    permission_classes = [IsAuthenticated]
+
 
 class CreateTagView(CreateAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 class ListItemsView(ListCreateAPIView):
-    queryset = ListItem.objects.all()
+    queryset = ListItem.objects.all().order_by("categories")
     serializer_class = ItemSerializer
 
     def get_queryset(self):
@@ -60,7 +60,7 @@ class ListItemsView(ListCreateAPIView):
 class ItemDetailView(UpdateAPIView):
     queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
-    permission_classes = [IsAuthenticated]
+  
 
 
 
