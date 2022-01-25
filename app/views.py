@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from .models import User, Location, Category, Product, List, Tag, ListItem
-from .serializers import ItemSerializer, ListSerializer, TagSerializer, UserSerializer
+from .serializers import ItemSerializer, ListSerializer, TagSerializer, UserSerializer, CategorySerializer
 from rest_framework.generics import ListAPIView, DestroyAPIView, ListCreateAPIView, RetrieveDestroyAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework import viewsets
 from rest_framework import status
@@ -43,7 +43,7 @@ class CreateTagView(CreateAPIView):
     serializer_class = TagSerializer
 
 class ListItemsView(ListCreateAPIView):
-    queryset = ListItem.objects.all().order_by("categories")
+    queryset = ListItem.objects.all().order_by("category")
     serializer_class = ItemSerializer
 
     def get_queryset(self):
@@ -51,6 +51,7 @@ class ListItemsView(ListCreateAPIView):
         return queryset.filter(list_id=self.kwargs["list_pk"])
 
     def perform_create(self, serializer):
+        category = Category.objects.filter(category=serializer.validated_data["category"])
         list = get_object_or_404(List, pk=self.kwargs["list_pk"])
         if self.request.user != list.user:
             raise PermissionDenied
@@ -60,7 +61,10 @@ class ListItemsView(ListCreateAPIView):
 class ItemDetailView(UpdateAPIView):
     queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
-  
+
+class CategoryView(ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 

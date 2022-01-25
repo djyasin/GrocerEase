@@ -20,28 +20,26 @@ class Location(models.Model):
     #isle_number
     pass
 
-class Category(models.Model):
-    category =  models.CharField(max_length=250)
-
 class Tag(models.Model):
     tag = models.CharField(max_length=250)
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
-    image = models.URLField(max_length=200, null=True, blank=True)
-    
+    image = models.URLField(max_length=200, null=True, blank=True)  
     locations = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
+
+class Category(models.Model):
+    category =  models.CharField(max_length=250)
 
 class List(models.Model):
     name = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lists') 
     tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
     date_created = models.DateTimeField(default=timezone.now)
-
     
 class ListItem(models.Model):
     name = models.CharField(max_length=250)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', null=True, blank=True) 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='listitems', null=True, blank=True) 
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
 

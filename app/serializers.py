@@ -1,3 +1,5 @@
+from unicodedata import category
+from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
 from .models import User, Location, Category, Product, List, Tag, ListItem
 from rest_framework.validators import UniqueValidator
@@ -28,14 +30,15 @@ class ProductSerializer(serializers.ModelSerializer):
         )
 
 class ItemSerializer(serializers.ModelSerializer):
-
+    category = serializers.CharField(max_length=50)
+    
     class Meta:
         model = ListItem
         fields = ( 'pk',
         'list',
         'name',
         'item_quantity',
-        'categories',
+        'category',
         'id',
         )
         read_only_fields = ['list']
