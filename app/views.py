@@ -26,14 +26,17 @@ class GroceryListView(generics.ListCreateAPIView):
 class ListDetailView(RetrieveUpdateDestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
+    permission_classes = [IsAuthenticated]
 
 class UpdateListView(UpdateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
+    permission_classes = [IsAuthenticated]
 
 class DeleteListView(DestroyAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
+    permission_classes = [IsAuthenticated]
 
 class CreateTagView(CreateAPIView):
     queryset = Tag.objects.all()
@@ -54,9 +57,10 @@ class ListItemsView(ListCreateAPIView):
         # if user does not own the list then return 403
         serializer.save(list=list)
 
-class ListItemsDetailView(UpdateAPIView):
+class ItemDetailView(UpdateAPIView):
     queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
+    permission_classes = [IsAuthenticated]
 
 
 
