@@ -36,6 +36,7 @@ class ItemSerializer(serializers.ModelSerializer):
         'name',
         'item_quantity',
         'categories',
+        'id',
         )
         read_only_fields = ['list']
     

@@ -54,12 +54,9 @@ class ListItemsView(ListCreateAPIView):
         # if user does not own the list then return 403
         serializer.save(list=list)
 
-
-
-    
-
-
-
+class ListItemsDetailView(UpdateAPIView):
+    queryset = ListItem.objects.all()
+    serializer_class = ItemSerializer
 
 
 
