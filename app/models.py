@@ -1,3 +1,5 @@
+from random import choices
+from sre_parse import CATEGORIES
 from django.utils import timezone
 from unicodedata import category
 from django.db import models
@@ -28,8 +30,25 @@ class Product(models.Model):
     image = models.URLField(max_length=200, null=True, blank=True)  
     locations = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
 
-class Category(models.Model):
-    category =  models.CharField(max_length=250)
+
+CATEGORIES = (
+    ("PRODUCE", "Produce"),
+    ("DAIRY", "Dairy"),
+    ("BAKED", "Baked Goods"),
+    ("MEAT", "Meat and Fish"),
+    ("SNACKS", "Snacks"),
+    ("ALCOHOL", "Alcohol"),
+    ("BABY", "Baby Care"),
+    ("CANNED", "Canned Goods"),
+    ("DRY", "Dry Goods"),
+    ("SAUCES", "Sauces and  Condiments"),
+    ("HERBS", "Herbs and Spices"),
+    ("BEVERAGES", "Non-Alcoholic Beverages"),
+    ("HOUSEHOLD", "Household and Cleaning"),
+    ("HEALTH", "Health and Beauty"),
+    ("PET", "Pet Care"),
+)
+
 
 class List(models.Model):
     name = models.CharField(max_length=250)
@@ -39,7 +58,7 @@ class List(models.Model):
     
 class ListItem(models.Model):
     name = models.CharField(max_length=250)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='listitems', null=True, blank=True) 
+    choices =  models.CharField(choices=CATEGORIES, max_length=100)
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
 

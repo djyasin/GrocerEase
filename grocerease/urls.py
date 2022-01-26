@@ -29,10 +29,9 @@ urlpatterns = [
     path('grocerease/create_tag/', app_views.CreateTagView.as_view(), name='create_Tag'),
     path('grocerease/lists/<int:list_pk>/items/', app_views.ListItemsView.as_view(), name='list_items'),
     path('grocerease/item_detail/<int:pk>/', app_views.ItemDetailView.as_view(), name='item_detail'),
-    path('grocerease/categories/', app_views.CategoryView.as_view(), name='categories')
-    
-    
-
+  
+  
+    # path('grocerease/categories/', app_views.CategoryView.as_view(), name='categories')
     # path('grocerease/create_item/', app_views.CreateItemView.as_view(), name='create_item'),
     # path('grocerease/view_lists/<int:pk>/', app_views.ViewListsView.as_view(), name='view_lists'),
 

@@ -1,7 +1,9 @@
+from random import choices
 from unicodedata import category
 from unittest.util import _MAX_LENGTH
+from django.forms import ChoiceField
 from rest_framework import serializers
-from .models import User, Location, Category, Product, List, Tag, ListItem
+from .models import User, Location, Product, List, Tag, ListItem
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.generics import get_object_or_404
@@ -14,12 +16,6 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ('tag',)
 
-class CategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Category
-        fields = ('category',)
-
 
 class ProductSerializer(serializers.ModelSerializer):
 
@@ -29,20 +25,49 @@ class ProductSerializer(serializers.ModelSerializer):
         'image',    
         )
 
+class Categories(object):
+    def __init__(self, choices): 
+        self.choices = choices 
+
+CATEGORIES = (
+    ("PRODUCE", "Produce"),
+    ("DAIRY", "Dairy"),
+    ("BAKED", "Baked Goods"),
+    ("MEAT", "Meat and Fish"),
+    ("SNACKS", "Snacks"),
+    ("ALCOHOL", "Alcohol"),
+    ("BABY", "Baby Care"),
+    ("CANNED", "Canned Goods"),
+    ("DRY", "Dry Goods"),
+    ("SAUCES", "Sauces and  Condiments"),
+    ("HERBS", "Herbs and Spices"),
+    ("BEVERAGES", "Non-Alcoholic Beverages"),
+    ("HOUSEHOLD", "Household and Cleaning"),
+    ("HEALTH", "Health and Beauty"),
+    ("PET", "Pet Care"),
+)
+
 class ItemSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(max_length=50)
-    
+    choices = serializers.ChoiceField(choices = CATEGORIES) 
+
+
     class Meta:
         model = ListItem
         fields = ( 'pk',
         'list',
         'name',
         'item_quantity',
-        'category',
-        'id',
+        'choices',
         )
-        read_only_fields = ['list']
-    
+        read_only_fields = ['list', 'choices']
+    def to_representation(self, value):
+        # sample: 'get_XXXX_display'
+        method_name = 'get_{CATEGORIES}_display'.format(choices=self.choices)
+        # retrieve instance method
+        method = getattr(value, method_name)
+        # finally use instance method to return result of get_XXXX_display()
+        return method()
+
 class ListSerializer(serializers.ModelSerializer):
 
     class Meta:
