@@ -62,7 +62,9 @@ class ItemDetailView(UpdateAPIView):
     queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
 
-    
+class ItemDeleteView(DestroyAPIView):
+    queryset = ListItem.objects.all()
+    serializer_class = ItemSerializer
 
 # class CategoryView(ListAPIView):
 #     queryset = Category.objects.all()
