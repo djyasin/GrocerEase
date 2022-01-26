@@ -1,5 +1,9 @@
+from random import choices
+from unicodedata import category
+from unittest.util import _MAX_LENGTH
+from django.forms import ChoiceField
 from rest_framework import serializers
-from .models import User, Location, Category, Product, List, Tag, ListItem
+from .models import User, Location, Product, List, Tag, ListItem
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.generics import get_object_or_404
@@ -12,12 +16,6 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ('tag',)
 
-class CategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Category
-        fields = ('category',)
-
 
 class ProductSerializer(serializers.ModelSerializer):
 
@@ -27,19 +25,40 @@ class ProductSerializer(serializers.ModelSerializer):
         'image',    
         )
 
-class ItemSerializer(serializers.ModelSerializer):
+class Categories(object):
+    def __init__(self, choices): 
+        self.choices = choices 
 
+CATEGORIES = (
+    ("Produce"),
+    ("Dairy"),
+    ("Baked Goods"),
+    ("Meat and Fish"),
+    ("Snacks"),
+    ("Alcohol"),
+    ("Baby Care"),
+    ("Canned Goods"),
+    ("Dry Goods"),
+    ("Sauces and  Condiments"),
+    ("Herbs and Spices"),
+    ("Non-Alcoholic Beverages"),
+    ("Household and Cleaning"),
+    ("Health and Beauty"),
+    ("Pet Care"),
+)
+
+class ItemSerializer(serializers.ModelSerializer):
+    choices = serializers.ChoiceField(choices = CATEGORIES) 
     class Meta:
         model = ListItem
         fields = ( 'pk',
         'list',
         'name',
         'item_quantity',
-        'categories',
-        'id',
+        'choices',
         )
-        read_only_fields = ['list']
-    
+        read_only_fields = ['list', 'choices']
+
 class ListSerializer(serializers.ModelSerializer):
 
     class Meta:

@@ -1,3 +1,5 @@
+from random import choices
+from sre_parse import CATEGORIES
 from django.utils import timezone
 from unicodedata import category
 from django.db import models
@@ -20,28 +22,42 @@ class Location(models.Model):
     #isle_number
     pass
 
-class Category(models.Model):
-    category =  models.CharField(max_length=250)
-
 class Tag(models.Model):
     tag = models.CharField(max_length=250)
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
-    image = models.URLField(max_length=200, null=True, blank=True)
-    
+    image = models.URLField(max_length=200, null=True, blank=True)  
     locations = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='locations')
+
 
 class List(models.Model):
     name = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lists') 
     tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
     date_created = models.DateTimeField(default=timezone.now)
-
     
 class ListItem(models.Model):
+    CATEGORIES = (
+    ("PRODUCE", "Produce"),
+    ("DAIRY", "Dairy"),
+    ("BAKED", "Baked Goods"),
+    ("MEAT", "Meat and Fish"),
+    ("SNACKS", "Snacks"),
+    ("ALCOHOL", "Alcohol"),
+    ("BABY", "Baby Care"),
+    ("CANNED", "Canned Goods"),
+    ("DRY", "Dry Goods"),
+    ("SAUCES", "Sauces and  Condiments"),
+    ("HERBS", "Herbs and Spices"),
+    ("BEVERAGES", "Non-Alcoholic Beverages"),
+    ("HOUSEHOLD", "Household and Cleaning"),
+    ("HEALTH", "Health and Beauty"),
+    ("PET", "Pet Care"),
+)
+
     name = models.CharField(max_length=250)
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories', null=True, blank=True) 
+    choices =  models.CharField(choices=CATEGORIES, max_length=100)
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
 
