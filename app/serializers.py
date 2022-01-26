@@ -30,27 +30,25 @@ class Categories(object):
         self.choices = choices 
 
 CATEGORIES = (
-    ("PRODUCE", "Produce"),
-    ("DAIRY", "Dairy"),
-    ("BAKED", "Baked Goods"),
-    ("MEAT", "Meat and Fish"),
-    ("SNACKS", "Snacks"),
-    ("ALCOHOL", "Alcohol"),
-    ("BABY", "Baby Care"),
-    ("CANNED", "Canned Goods"),
-    ("DRY", "Dry Goods"),
-    ("SAUCES", "Sauces and  Condiments"),
-    ("HERBS", "Herbs and Spices"),
-    ("BEVERAGES", "Non-Alcoholic Beverages"),
-    ("HOUSEHOLD", "Household and Cleaning"),
-    ("HEALTH", "Health and Beauty"),
-    ("PET", "Pet Care"),
+    ("Produce"),
+    ("Dairy"),
+    ("Baked Goods"),
+    ("Meat and Fish"),
+    ("Snacks"),
+    ("Alcohol"),
+    ("Baby Care"),
+    ("Canned Goods"),
+    ("Dry Goods"),
+    ("Sauces and  Condiments"),
+    ("Herbs and Spices"),
+    ("Non-Alcoholic Beverages"),
+    ("Household and Cleaning"),
+    ("Health and Beauty"),
+    ("Pet Care"),
 )
 
 class ItemSerializer(serializers.ModelSerializer):
     choices = serializers.ChoiceField(choices = CATEGORIES) 
-
-
     class Meta:
         model = ListItem
         fields = ( 'pk',
@@ -60,13 +58,6 @@ class ItemSerializer(serializers.ModelSerializer):
         'choices',
         )
         read_only_fields = ['list', 'choices']
-    def to_representation(self, value):
-        # sample: 'get_XXXX_display'
-        method_name = 'get_{CATEGORIES}_display'.format(choices=self.choices)
-        # retrieve instance method
-        method = getattr(value, method_name)
-        # finally use instance method to return result of get_XXXX_display()
-        return method()
 
 class ListSerializer(serializers.ModelSerializer):
 

@@ -51,7 +51,7 @@ class ListItemsView(ListCreateAPIView):
         return queryset.filter(list_id=self.kwargs["list_pk"])
 
     def perform_create(self, serializer):
-        choices = ListItem.objects.filter(choices=serializer.validated_data["choices"])
+        # choices = ListItem.objects.filter(choices=serializer.validated_data["choices"])
         list = get_object_or_404(List, pk=self.kwargs["list_pk"])
         if self.request.user != list.user:
             raise PermissionDenied
