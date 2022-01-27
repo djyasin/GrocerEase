@@ -32,9 +32,9 @@ class Product(models.Model):
 
 
 class List(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lists') 
-    tags = models.ManyToManyField('Tag', related_name='lists', blank=True)
+    tags = models.ManyToManyField('Tag', related_name='lists', null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     
 class ListItem(models.Model):
@@ -56,8 +56,8 @@ class ListItem(models.Model):
     ("PET", "Pet Care"),
 )
 
-    name = models.CharField(max_length=250)
-    choices =  models.CharField(choices=CATEGORIES, max_length=100)
+    name = models.CharField(max_length=250, null=True, blank=True)
+    choices =  models.CharField(choices=CATEGORIES, max_length=100, null=True, blank=True)
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
 
