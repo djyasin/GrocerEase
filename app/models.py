@@ -38,26 +38,27 @@ class List(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
     
 class ListItem(models.Model):
-    CATEGORIES = (
-    ("PRODUCE", "Produce"),
-    ("DAIRY", "Dairy"),
-    ("BAKED", "Baked Goods"),
-    ("MEAT", "Meat and Fish"),
-    ("SNACKS", "Snacks"),
-    ("ALCOHOL", "Alcohol"),
-    ("BABY", "Baby Care"),
-    ("CANNED", "Canned Goods"),
-    ("DRY", "Dry Goods"),
-    ("SAUCES", "Sauces and  Condiments"),
-    ("HERBS", "Herbs and Spices"),
-    ("BEVERAGES", "Non-Alcoholic Beverages"),
-    ("HOUSEHOLD", "Household and Cleaning"),
-    ("HEALTH", "Health and Beauty"),
-    ("PET", "Pet Care"),
-)
+#     # CATEGORIES = (
+#     # ("PRODUCE", "Produce"),
+#     # ("DAIRY", "Dairy"),
+#     # ("BAKED", "Baked Goods"),
+#     # ("MEAT", "Meat and Fish"),
+#     # ("SNACKS", "Snacks"),
+#     # ("ALCOHOL", "Alcohol"),
+#     # ("BABY", "Baby Care"),
+#     # ("CANNED", "Canned Goods"),
+#     # ("DRY", "Dry Goods"),
+#     # ("SAUCES", "Sauces and  Condiments"),
+#     # ("HERBS", "Herbs and Spices"),
+#     # ("BEVERAGES", "Non-Alcoholic Beverages"),
+#     # ("HOUSEHOLD", "Household and Cleaning"),
+#     # ("HEALTH", "Health and Beauty"),
+#     # ("PET", "Pet Care"),
+# )
 
     name = models.CharField(max_length=250, null=True, blank=True)
-    choices =  models.CharField(choices=CATEGORIES, max_length=100, null=True, blank=True)
+    choices =  models.CharField( max_length=100, null=True, blank=True)
+    # choices=CATEGORIES,
     item_quantity = models.PositiveIntegerField(default=1)
     list = models.ForeignKey(List, on_delete=models.CASCADE, related_name='list')
 
