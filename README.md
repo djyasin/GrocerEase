@@ -50,3 +50,4 @@ https://grocerease.herokuapp.com/grocerease/lists/list_id/items/
 List ID in Url. For PATCH will require item name. Both require an auth token.	
 GET: Gets the items on an exisiting list. Auth token must be provided in the header.
 POST: Creates a list item by name on an existing list. Auth token must be provided in the header. "																									
+A Change

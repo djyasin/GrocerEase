@@ -92,6 +92,3 @@ class ItemDeleteView(DestroyAPIView):
 #         users = self.request.user
 #         queryset = List.objects.filter(users=users.pk)
 #         return queryset
-
-
-
