@@ -27,7 +27,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class Categories(object):
     def __init__(self, choices): 
-        self.choices = choices 
+        self.choices = choices
 
 CATEGORIES = (
     ("Produce"),
@@ -79,4 +79,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "email", "password")
-
