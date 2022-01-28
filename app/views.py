@@ -43,7 +43,8 @@ class CreateTagView(CreateAPIView):
     serializer_class = TagSerializer
 
 class ListItemsView(ListCreateAPIView):
-    queryset = ListItem.objects.all().order_by("choices")
+    queryset = ListItem.objects.all()
+    # .order_by("choices")
     serializer_class = ItemSerializer
 
     def get_queryset(self):

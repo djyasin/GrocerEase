@@ -27,9 +27,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class Categories(object):
     def __init__(self, choices): 
-        self.choices = choices 
+        self.choices = choices
 
-CATEGORIES = (
+CHOICES = (
     ("Produce"),
     ("Dairy"),
     ("Baked Goods"),
@@ -48,7 +48,7 @@ CATEGORIES = (
 )
 
 class ItemSerializer(serializers.ModelSerializer):
-    choices = serializers.ChoiceField(choices = CATEGORIES) 
+    choices = serializers.ChoiceField(choices = CHOICES) 
     class Meta:
         model = ListItem
         fields = ( 'pk',
@@ -79,4 +79,3 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "email", "password")
-
