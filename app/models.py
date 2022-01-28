@@ -37,45 +37,27 @@ class List(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
 
 class Choices(models.Model):
-    PRODUCE = '1'
-    DAIRY = '2'
-    BAKED = '3'
-    MEAT = '4'
-    SNACKS = '5'
-    ALCOHOL= '6'
-    BABY = '7'
-    CANNED = '8'
-    DRY = '9'
-    SAUCES = '10'
-    HERBS = '11'
-    BEVERAGES = '12'
-    HOUSEHOLD = '13'
-    HEALTH = '14'
-    PET = '15'
-    FREEZER = '16'
+    class ChoiceOptions(models.TextChoices):
+        PRODUCE = 'a', 'Produce'
+        DAIRY = 'b', 'Dairy'
+        BAKED = 'c', 'Baked Goods'
+        MEAT = 'd', 'Meat and Fish'
+        SNACKS = 'f', 'Snacks'
+        ALCOHOL= 'g', 'Alcohol'
+        BABY = 'h', 'Baby Care'
+        CANNED = 'i', 'Canned Goods'
+        DRY = 'j', 'Dry Goods'
+        SAUCES = 'k', 'Sauces and Condiments'
+        HERBS = 'l', 'Herbs and Spices'
+        BEVERAGES = 'm', 'Non-Alcoholic Beverages'
+        HOUSEHOLD = 'n', 'Household and Cleaning'
+        HEALTH = 'o', 'Health and Beauty'
+        PET = 'p', 'Pet Care'
+        FREEZER = 'q', 'Frozen Goods'
 
-    CHOICES = (
-        (PRODUCE, '1'),
-        (DAIRY, '2'),
-        (BAKED, '3'),
-        (MEAT, '4'),
-        (SNACKS, '5'),
-        (ALCOHOL, '6'),
-        (BABY, '7'),
-        (CANNED, '8'),
-        (DRY, '9'),
-        (SAUCES, '10'),
-        (HERBS, '11'),
-        (BEVERAGES, '12'),
-        (HOUSEHOLD,'13'),
-        (HEALTH, '14'),
-        (PET, '15'),
-        (FREEZER, '16'),
-    )
-    status = models.CharField(
+    choice_options = models.CharField(
         max_length=42,
-        choices=CHOICES,
-        default= 1,
+        choices=ChoiceOptions.choices
     )
 class ListItem(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True)
