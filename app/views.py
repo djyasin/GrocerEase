@@ -48,7 +48,6 @@ class ListItemsView(ListCreateAPIView):
     serializer_class = ItemSerializer
 
     def list(self, request, *args, **kwargs):
-        # Note the use of `get_queryset()` instead of `self.queryset`
         queryset = self.get_queryset()
         serializer = ItemSerializer(queryset, many=True)
         categories = [cat for _, cat in ListItem.CATEGORIES]
@@ -60,7 +59,6 @@ class ListItemsView(ListCreateAPIView):
         return queryset.filter(list_id=self.kwargs["list_pk"])
 
     def perform_create(self, serializer):
-        # choices = ListItem.objects.filter(choices=serializer.validated_data["choices"])
         list = get_object_or_404(List, pk=self.kwargs["list_pk"])
         if self.request.user != list.user:
             raise PermissionDenied
@@ -75,29 +73,4 @@ class ItemDeleteView(DestroyAPIView):
     queryset = ListItem.objects.all()
     serializer_class = ItemSerializer
 
-# class CategoryView(ListAPIView):
-#     queryset = Category.objects.all()
-#     serializer_class = CategorySerializer
 
-
-
-# class AddListItemView(RetrieveUpdateDestroyAPIView):
-#     queryset = List.objects.all()
-#     serializer_class = ListSerializer
-
-# class CreateItemView(generics.CreateAPIView):
-#     queryset = ListItem()
-#     serializer_class = ItemSerializer
-
-# class ListsView(generics.ListAPIView):
-#     queryset = List.objects.all()
-#     serializer_class = ListSerializer
-
-# class ViewListsView(generics.ListAPIView):
-#     queryset = List.objects.all()
-#     serializer_class = ListSerializer
-
-#     def get_queryset(self):
-#         users = self.request.user
-#         queryset = List.objects.filter(users=users.pk)
-#         return queryset
