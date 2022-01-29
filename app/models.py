@@ -54,6 +54,7 @@ class ListItem(models.Model):
     ("HOUSEHOLD", "Household and Cleaning"),
     ("HEALTH", "Health and Beauty"),
     ("PET", "Pet Care"),
+    ("FREEZER", "Frozen Goods")
 )
 
     name = models.CharField(max_length=250)

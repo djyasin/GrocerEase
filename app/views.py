@@ -11,6 +11,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import get_object_or_404
 
+
 class GroceryListView(generics.ListCreateAPIView):
     queryset = List.objects.all()
     serializer_class = ListSerializer
@@ -46,6 +47,14 @@ class ListItemsView(ListCreateAPIView):
     queryset = ListItem.objects.all().order_by("choices")
     serializer_class = ItemSerializer
 
+    def list(self, request, *args, **kwargs):
+        # Note the use of `get_queryset()` instead of `self.queryset`
+        queryset = self.get_queryset()
+        serializer = ItemSerializer(queryset, many=True)
+        categories = [cat for _, cat in ListItem.CATEGORIES]
+        sorted_data = sorted(serializer.data,key=lambda item: categories.index(item['choices']))
+        return Response(sorted_data)
+        
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.filter(list_id=self.kwargs["list_pk"])
