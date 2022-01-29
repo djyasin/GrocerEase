@@ -9,8 +9,7 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework.generics import get_object_or_404
 from rest_framework.exceptions import PermissionDenied
 
-# class LoctaionSerializer(serializers.ModelSerializer):
-#     pass
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
