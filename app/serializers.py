@@ -1,29 +1,10 @@
-from random import choices
-from unicodedata import category
-from unittest.util import _MAX_LENGTH
-from django.forms import ChoiceField
 from rest_framework import serializers
-from .models import User, Location, Product, List, Tag, ListItem
-from rest_framework.validators import UniqueValidator
-from django.contrib.auth.password_validation import validate_password
-from rest_framework.generics import get_object_or_404
-from rest_framework.exceptions import PermissionDenied
-
-
+from .models import User, List, Tag, ListItem
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ('tag',)
-
-
-class ProductSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Product
-        fields = ('name',
-        'image',    
-        )
 
 class Categories(object):
     def __init__(self, choices): 
