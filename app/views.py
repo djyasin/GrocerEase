@@ -1,13 +1,8 @@
-from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
-from .models import User, Location,  Product, List, Tag, ListItem
-from .serializers import ItemSerializer, ListSerializer, TagSerializer, UserSerializer
-from rest_framework.generics import ListAPIView, DestroyAPIView, ListCreateAPIView, RetrieveDestroyAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
-from rest_framework import viewsets
-from rest_framework import status
+from .models import List, Tag, ListItem
+from .serializers import ItemSerializer, ListSerializer, TagSerializer
+from rest_framework.generics import DestroyAPIView, ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import get_object_or_404
 
