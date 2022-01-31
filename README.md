@@ -26,7 +26,7 @@ Creates a list with a list name, associated user, tags, and date created.
 ```bash
 {
     "name": "Harris Teeter",
-		"tags": [1]
+	"tags": [1]
 }
 ```
 #### GET: 
