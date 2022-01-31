@@ -26,7 +26,7 @@ Creates a list with a list name, associated user, tags, and date created.
 ```bash
 {
     "name": "Harris Teeter",
-		"tags": [1]
+	"tags": [1]
 }
 ```
 #### GET: 
@@ -99,7 +99,7 @@ Creates a tag which can then later be associated with a list by ID.
 #### JSON:
 ```bash
 {
-	"tag": "Party List"
+		"tag": "Party List"
 }
 ```
 ```bash
@@ -186,8 +186,9 @@ Item ID in URL. Input "name," or "item_quantity." Requires an auth token in the 
 Retrieves a single item by item id. Can be used to update item information. 
 #### JSON:
 ```bash
-{		"name": "Cucumbers",
-        "item_quantity": 2
+{
+	"name": "Cucumbers",
+	"item_quantity": 2
 }
 ```
 ```bash
