@@ -1,6 +1,6 @@
 # GrocerEase API
 
-GrocerEase is designed to help eliminate the emotional labor of grocery shopping. Users can enter products into named shopping lists then set item quantity, a category choice, and a product name. Once the user accesses their saved items via a GET request it will return a sorted grocery list. The list is sorted by common grocery store layout, based on market research. 
+GrocerEase is designed to help eliminate the emotional labor of grocery shopping. Users can create list tags which can then be assigned to named lists. Lists automatically are assigned a date created once the list data is submitted. Users can then populate the lists by entering a product name, item quantity, and a category choice. Once the user accesses their saved items via a GET request it will return a sorted grocery list. The list is sorted by common grocery store layout, based on market research. 
 
 
 ## Installation
