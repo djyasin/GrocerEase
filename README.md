@@ -1,6 +1,6 @@
 # GrocerEase API
 
-GrocerEase is designed to help eliminate the emotional labor of grocery shopping. Users can enter products into shopping lists and set item quantity, a category choice, and a product name. Once the user accesses their saved items via a GET request it will return a sorted grocery list. The list is sorted by common grocery store layout, based on market research. 
+GrocerEase is designed to help eliminate the emotional labor of grocery shopping. Users can enter products into named shopping lists then set item quantity, a category choice, and a product name. Once the user accesses their saved items via a GET request it will return a sorted grocery list. The list is sorted by common grocery store layout, based on market research. 
 
 
 ## Installation
@@ -16,7 +16,7 @@ pipenv install
 Please see the list of endpoints and their respective functionality below. This application is deployed via Heroku.com and has a base URL of 
 
 ```bash
-https://grocerease.herokuapp.com/grocerease/lists/
+https://grocerease.herokuapp.com
 ```
 #### Input:
 List name as a string. Must have an auth token/be logged in so that list is associated with respective user. 
@@ -199,6 +199,38 @@ Item ID in URL.
 Requires an auth token in the authorization header.   
 #### DELETE: 
 Once list is accessed will delete entire list giving a 204 response. 
+
+```bash
+https://grocerease.herokuapp.com/auth/users/
+```
+#### Input:
+Desired username and password. 
+#### POST:
+Creates a new user. Can be used for the registration page. Will create an associated user ID.
+#### JSON:
+```bash
+{
+	"username": "TestUser",
+	"password": "Badpassword"
+}
+```
+```bash
+https://grocerease.herokuapp.com/auth/token/login/
+```
+#### Input:
+Registered user's username and password.
+#### POST:
+Creates a session token for login(Make sure FE is passing auth token).
+Returns a secure auth token for the user session.
+
+```bash
+https://grocerease.herokuapp.com/auth/token/logout/
+```
+#### Input:
+Auth token. (No body is required for this request).
+#### POST:
+Destroys the session token, logging the user out. While no body is required for this request, the auth token must be sent in the authorization header.
+
 
 
 
