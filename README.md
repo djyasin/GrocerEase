@@ -13,7 +13,7 @@ pipenv install
 
 ## REST API Endpoints
 
-Please see the list of endpoints and their respective functionality below. This application is deployed via Heroku.com and has a base URL of 
+Please see the list of endpoints and their respective functionality below. This application is deployed via Heroku.com and has a base URL of:
 
 ```bash
 https://grocerease.herokuapp.com
@@ -25,7 +25,7 @@ Creates a list with a list name, associated user, tags, and date created.
 #### JSON:
 ```bash
 {
-	"name": "Weeknight Dinners ",
+	"name": "Weeknight Dinners",
 	"tags": [1]
 }
 ```
@@ -107,7 +107,7 @@ https://grocerease.herokuapp.com/grocerease/lists/list_id/items/
 ```
 #### Input:
 List-ID in Url. For POST will require item name. Both GET and POST require an auth token. This field will take  "name" and "item_quantity". Please note "item_quantity" does default to a value of 1.
-Requires an auth token in the authorization header. "
+Requires an auth token in the authorization header. 
 #### POST:
 Creates a list item by name on an existing list. A choice from the choices field must be provided. Auth token must be provided in the header. 
 #### Choices:
