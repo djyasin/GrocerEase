@@ -25,7 +25,7 @@ Creates a list with a list name, associated user, tags, and date created.
 #### JSON:
 ```bash
 {
-    "name": "Harris Teeter",
+	"name": "Harris Teeter",
 	"tags": [1]
 }
 ```
@@ -99,7 +99,7 @@ Creates a tag which can then later be associated with a list by ID.
 #### JSON:
 ```bash
 {
-		"tag": "Party List"
+	"tag": "Party List"
 }
 ```
 ```bash
