@@ -220,14 +220,14 @@ https://grocerease.herokuapp.com/auth/token/login/
 #### Input:
 Registered user's username and password.
 #### POST:
-Creates a session token for login(Make sure FE is passing auth token).
+Creates a session token for login.
 Returns a secure auth token for the user session.
 
 ```bash
 https://grocerease.herokuapp.com/auth/token/logout/
 ```
 #### Input:
-Auth token. (No body is required for this request).
+Auth token. No body is required for this request.
 #### POST:
 Destroys the session token, logging the user out. While no body is required for this request, the auth token must be sent in the authorization header.
 
