@@ -25,7 +25,7 @@ Creates a list with a list name, associated user, tags, and date created.
 #### JSON:
 ```bash
 {
-	"name": "Harris Teeter",
+	"name": "Weeknight Dinners ",
 	"tags": [1]
 }
 ```
@@ -36,7 +36,7 @@ List name as a string. Must have an auth token/be logged in so that list is asso
 ```bash
 {
 	"pk": 5,
-	"name": "Harris Teeter",
+	"name": "Weeknight Dinners",
 	"user": 1,
 	"tags": [
 		1
@@ -55,7 +55,7 @@ This endpoint retrieves a single list, excluding items, by a given list id.
 ```bash
 {
 	"pk": 2,
-	"name": "Test List 2",
+	"name": "Baby Shower Grocery List",
 	"user": 1,
 	"tags": [
 		1
@@ -83,7 +83,7 @@ Name will take a string and tags take a tag ID.
 ```bash
 {
 	"pk": 7,
-	"name": "Sample List",
+	"name": "Essential Shopping List",
 	"user": 2,
 	"tags": [1],
 	"date_created": "2022-01-21T06:12:06.159448Z"
@@ -99,7 +99,7 @@ Creates a tag which can then later be associated with a list by ID.
 #### JSON:
 ```bash
 {
-	"tag": "Party List"
+	"tag": "Bulk Shopping"
 }
 ```
 ```bash
@@ -132,9 +132,9 @@ Creates a list item by name on an existing list. A choice from the choices field
 #### Response:
 ```bash
 {
-	"name": "Jolly Ranchers",
-	"item_quantity": 1,
-	"choices": "Snacks"
+	"name": "Cucumbers",
+	"item_quantity": 4,
+	"choices": "Produce"
 }
 ```
 #### GET:
@@ -144,7 +144,7 @@ Gets the items on an existing list sorted by item category. Auth token must be p
 {
 		"pk": 14,
 		"list": 2,
-		"name": "Jolly Ranchers",
+		"name": "Mixed Nuts",
 		"item_quantity": 1,
 		"choices": "Snacks"
 	},
